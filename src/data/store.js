@@ -5,7 +5,8 @@ import { getToday } from "../utils/date.js";
 const useStore = create((set) => ({
   todos: todos, // TODO: "todos" är data som du kan använda under utvecklingen - byt ut den mot din egen testdata
 
-  todayName: getToday(),
+  //   todayName: getToday(),
+  todayName: "Måndag",
 
   // TODO: du behöver en funktion setTodayName för att kunna testa appen med olika veckodagar
   setTodayName: (newTodayName) => set({ todayName: newTodayName }),
