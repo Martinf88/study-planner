@@ -32,5 +32,6 @@ describe("Edit, remove and search tasks", () => {
     cy.visit("/");
     cy.get("input[type='search']").should("be.visible").type("inlämning");
     cy.get(".prio-items").children().its("length").should("eq", 2);
+    cy.get("input[type='search']").clear();
   });
 });
