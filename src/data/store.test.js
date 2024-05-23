@@ -1,6 +1,5 @@
 import { describe, it, expect, beforeEach } from "vitest";
 import { useStore } from "./store";
-import { create } from "zustand";
 import { act } from "@testing-library/react";
 
 const createStore = () => {
