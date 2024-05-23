@@ -35,7 +35,6 @@ describe("<Item />", () => {
     });
 
     it("should save when 'Spara' is click", () => {
-      //TODO kontrollera att zustand store innehåller rätt värde
       cy.get("span[title='Ändra']").click();
       cy.get("span[title='Spara']").click();
     });
@@ -46,16 +45,7 @@ describe("<Item />", () => {
       cy.get("span[title='Ta bort']").should("be.visible");
     });
 
-    // it("removes task when span with the text 'Ta bort' is clicked", () => {
-    //   const initialTodos = useStore.getState().todos;
-
-    //   const newData = ''
-    //   useStore.setState({initialTodos: newData})
-
-    // });
-
     it("removes task when span with the text 'Ta bort' is clicked", () => {
-      // Sätt initialt tillstånd
       useStore.setState({
         todos: [
           { id: 1, text: "Test item 1", done: false, late: false },
@@ -64,20 +54,16 @@ describe("<Item />", () => {
         ],
       });
 
-      // Kontrollera initiala antalet uppgifter
       let initialTodos = useStore.getState().todos;
       expect(initialTodos).to.have.lengthOf(3);
 
-      // Montera komponenten med den första uppgiften
       cy.mount(
         <Item item={{ id: 1, text: "Test item 1", done: false, late: false }} />
       );
 
-      // Klicka på "Ta bort"-knappen och kontrollera att uppgiften tas bort
       cy.get("span[title='Ta bort']")
         .click()
         .then(() => {
-          // Vänta på att Zustand uppdateras
           cy.wrap(useStore)
             .invoke("getState")
             .its("todos")

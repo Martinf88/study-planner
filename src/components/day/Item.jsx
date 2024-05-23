@@ -5,6 +5,7 @@ const Item = ({ item }) => {
   const [isChecked, setIsChecked] = useState(item.done);
   const [isEditing, setIsEditing] = useState(false);
   const [editedText, setEditedText] = useState(item.text);
+
   const { toggleTodo, setTodos, todos } = useStore((state) => ({
     toggleTodo: state.toggleTodo,
     setTodos: state.setTodos,
@@ -29,11 +30,7 @@ const Item = ({ item }) => {
   };
 
   const handleRemoveItem = (id) => {
-    console.log("Removing item with id:", id);
-
     const updatedTodos = todos.filter((todoItem) => todoItem.id !== item.id);
-
-    console.log("Updated todos:", updatedTodos);
     setTodos(updatedTodos);
   };
 
@@ -62,9 +59,11 @@ const Item = ({ item }) => {
           <span title="Ta bort" onClick={() => handleRemoveItem(item.id)}>
             🗑️
           </span>
+          {/* <span title="Snooza">
+            💤
+          </span> */}
         </>
       )}
-      {/* <span title="Snooza">💤</span> */}
     </div>
   );
 };
